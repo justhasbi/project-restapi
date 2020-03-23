@@ -13,39 +13,51 @@
     <title>List</title>
 </head>
 <body>
+
+    <?php echo $this->session->flashdata('hasil');?>
+
     <!-- Content -->
-    <div class="card-body">
-        <div class="table-resposive">
-            <div class="table table-hover" id="dataTable" width="100%" cellspacing="0">
-                <thead>
-                    <tr>
-                        <th>No </th>
-                        <th>Judul Buku</th>
-                        <th>Jenis Buku</th>
-                        <th>Nama Pengarang</th>
-                        <th>Jumlah Halaman</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php 
-                    $no = 1;
-                    foreach($data as $dt):?>
-                    
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+    <div class="card mb-3">
+        <div class="card-header">
+            <a href="<?php echo base_url('client/add');?>"><button class="btn btn-primary">Tambah Data</button></a>
+        </div>
 
-                    <?php endforeach;?>
-                </tbody>
+        <div class="card-body">
+            <div class="table-resposive">
+                <div class="table table-hover" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>No </th>
+                            <th>Judul Buku</th>
+                            <th>Jenis Buku</th>
+                            <th>Nama Pengarang</th>
+                            <th>Jumlah Halaman</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php 
+                        $no = 1;
+                        foreach($data as $dt):?>
+                        
+                        <td><?php echo $no++; ?></td>
+                        <td><?php echo $dt->judul_buku; ?></td>
+                        <td><?php echo $dt->jenis_buku; ?></td>
+                        <td><?php echo $dt->nama_pengarang; ?></td>
+                        <td><?php echo $dt->jml_halaman; ?></td>
+                        
+                        <td>
+                            <a href="<?php echo base_url('client/edit/'. $dt->id_buku); ?>"><button class="btn btn-sm btn-info">Edit</button></a>
+                            
+                            <a href="<?php echo base_url('client/delete/'. $dt->id_buku); ?>"><button class="btn btn-sm btn-danger">Delete</button></a>    
+                        </td>
+
+                        <?php endforeach;?>
+                    </tbody>
+                </div>
             </div>
-
         </div>
     </div>
-
 
 
 </body>
